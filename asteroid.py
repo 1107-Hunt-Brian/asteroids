@@ -8,12 +8,9 @@ class Asteroid(CircleShape):
         if radius is None:
             radius = random.randint(ASTEROID_MIN_RADIUS, ASTEROID_MAX_RADIUS)
         super().__init__(x, y, radius)
-
-        # Assign a random velocity if not set externally
-        if not hasattr(self, "velocity"):
-            angle = random.uniform(0, 360)
-            speed = random.uniform(50, 150)  # pixels per second
-            self.velocity = pygame.Vector2(0, 1).rotate(angle) * speed
+        angle = random.uniform(0, 360)
+        speed = random.uniform(50, 150)  # pixels per second
+        self.velocity = pygame.Vector2(0, 1).rotate(random.uniform(0, 360)) * random.uniform(50, 150)
 
     def draw(self, screen):
         pygame.draw.circle(screen, (200, 200, 200), (int(self.position.x), int(self.position.y)), self.radius, 2)
